@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edgar Azevedo · Ageas Seguros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Ageas brand gradient: magenta → orange → teal */
+  --ageas-pink:    #E4007C;
+  --ageas-orange:  #F26522;
+  --ageas-teal:    #00B5AD;
+  --ageas-teal-dark: #008f88;
+
+  /* Primary accent — use gradient via class */
+  --magenta:       #E4007C;
+  --magenta-dark:  #b8005f;
+  --magenta-light: #ff4da6;
+  --magenta-pale:  #fdf0f7;
+
+  /* Backgrounds — now light */
+  --dark:          #1a1a2e;
+  --navy:          #1e2a3a;
+  --white:         #ffffff;
+  --offwhite:      #f9fafb;
+  --lightgray:     #f3f4f6;
+  --cream:         #fafaf8;
+
+  --gray:          #6b7280;
+  --border:        #e5e7eb;
+  --text:          #111827;
+  --success:       #059669;
+
+  /* Gradient shortcuts */
+  --grad-full:     linear-gradient(90deg, #E4007C 0%, #F26522 50%, #00B5AD 100%);
+  --grad-pink-org: linear-gradient(90deg, #E4007C 0%, #F26522 100%);
+  --grad-org-teal: linear-gradient(90deg, #F26522 0%, #00B5AD 100%);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+a{color:inherit}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+
+/* ── AGEAS GRADIENT UTILITIES ── */
+.grad-text{
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:66px;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:2px solid transparent;
+  border-image:var(--grad-full) 1;
+  box-shadow:0 2px 20px rgba(0,0,0,0.06);
+}
+.nav-brand{display:flex;align-items:center;gap:0.75rem}
+.nav-logo-box{
+  width:36px;height:36px;
+  background:var(--grad-full);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.1rem;color:#fff;
+}
+.nav-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:700;color:var(--text);
+  letter-spacing:0.02em;
+}
+.nav-name span{
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--ageas-pink)}
+.nav-cta{
+  background:var(--grad-pink-org);color:#fff;
+  padding:0.5rem 1.25rem;border-radius:6px;
+  font-size:0.85rem;font-weight:600;text-decoration:none;
+  transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.88}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--white);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 5%;padding-top:66px;
+  position:relative;overflow:hidden;
+  gap:4rem;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 100% 60%, rgba(0,181,173,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 0% 40%, rgba(228,0,124,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 50% 0%, rgba(242,101,34,0.04) 0%, transparent 55%);
+}
+.hero-lines{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,181,173,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(228,0,124,0.03) 1px, transparent 1px);
+  background-size:52px 52px;
+}
+.hero-left{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:1px solid rgba(228,0,124,0.25);
+  background:rgba(228,0,124,0.06);
+  color:var(--ageas-pink);
+  padding:0.35rem 0.9rem;border-radius:100px;
+  font-size:0.75rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:1.75rem;
+  animation:fadeUp 0.5s ease both;
+}
+.hero-badge-dot{
+  width:6px;height:6px;background:var(--ageas-pink);border-radius:50%;
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,4.5vw,3.9rem);
+  font-weight:700;
+  color:var(--text);line-height:1.1;
+  margin-bottom:1.25rem;
+  animation:fadeUp 0.5s 0.1s ease both;
+}
+.hero h1 .accent{
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:1rem;color:var(--gray);
+  line-height:1.8;font-weight:300;
+  margin-bottom:2.5rem;max-width:500px;
+  animation:fadeUp 0.5s 0.2s ease both;
+}
+.hero-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  animation:fadeUp 0.5s 0.3s ease both;
+}
+.btn-primary{
+  background:var(--grad-pink-org);color:#fff;
+  padding:0.875rem 1.75rem;border-radius:6px;
+  font-weight:600;font-size:0.9rem;
+  text-decoration:none;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:all 0.2s;
+}
+.btn-primary:hover{opacity:0.88;transform:translateY(-2px);box-shadow:0 8px 24px rgba(228,0,124,0.25)}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  padding:0.875rem 1.75rem;border-radius:6px;
+  font-weight:500;font-size:0.9rem;
+  text-decoration:none;border:1.5px solid var(--border);cursor:pointer;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:all 0.2s;
+}
+.btn-ghost:hover{border-color:var(--ageas-pink);color:var(--ageas-pink)}
+
+.hero-right{
+  position:relative;z-index:2;
+  animation:fadeLeft 0.6s 0.4s ease both;
+}
+.hero-card{
+  background:var(--white);
+  border:1.5px solid transparent;
+  background:linear-gradient(white,white) padding-box, var(--grad-full) border-box;
+  border-radius:16px;padding:2rem;
+  box-shadow:0 8px 40px rgba(0,0,0,0.07);
+}
+.hero-card-title{
+  font-size:0.7rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.12em;
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:1.5rem;
+}
+.hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hero-stat{
+  background:var(--offwhite);
+  border:1px solid var(--border);
+  border-radius:10px;padding:1.25rem;
+}
+.hero-stat .num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;font-weight:700;
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:block;line-height:1;
+}
+.hero-stat .lbl{font-size:0.75rem;color:var(--gray);margin-top:0.3rem;display:block}
+.hero-divider{height:1px;background:linear-gradient(90deg,rgba(228,0,124,0.2),rgba(0,181,173,0.2));margin:1.5rem 0}
+.hero-trust{display:flex;flex-direction:column;gap:0.75rem}
+.trust-row{
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.82rem;color:var(--gray);
+}
+.trust-icon-wrap{
+  width:28px;height:28px;
+  background:rgba(228,0,124,0.08);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.trust-icon-wrap svg{width:14px;height:14px;color:var(--ageas-pink)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+.trust-bar{background:var(--offwhite);padding:1.5rem 5%;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;font-weight:500;color:var(--text)}
+.trust-icon{width:20px;height:20px;flex-shrink:0}
+
+/* ── SECTION BASE ── */
+section{padding:5rem 5%}
+.s-tag{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:0.6rem;display:block;
+}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3vw,2.7rem);font-weight:700;color:var(--text);line-height:1.15;margin-bottom:0.75rem}
+.s-sub{font-size:0.95rem;color:var(--gray);line-height:1.8;max-width:520px}
+
+/* ── PRODUTO SECTION ── */
+#produto{background:var(--offwhite)}
+.planos-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+
+/* PLAN TOGGLE */
+.plan-switcher{
+  display:flex;background:var(--lightgray);
+  border-radius:8px;padding:4px;gap:4px;
+}
+.plan-tab{
+  padding:0.5rem 1.25rem;border-radius:6px;
+  font-size:0.85rem;font-weight:600;
+  border:none;cursor:pointer;background:transparent;
+  color:var(--gray);transition:all 0.2s;
+}
+.plan-tab.active{background:#fff;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+
+/* COVERAGE TABLE */
+.coverage-table{
+  width:100%;border-collapse:collapse;
+  border-radius:12px;overflow:hidden;
+  border:1px solid var(--border);
+  font-size:0.875rem;
+}
+.coverage-table thead tr{background:var(--grad-full)}
+.coverage-table thead th{
+  padding:0.9rem 1rem;text-align:center;
+  color:#fff;font-weight:600;font-size:0.8rem;
+  letter-spacing:0.05em;
+}
+.coverage-table thead th:first-child{text-align:left}
+.coverage-table tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s}
+.coverage-table tbody tr:hover{background:#fdf5fb}
+.coverage-table tbody tr:last-child{border-bottom:none}
+.coverage-table td{padding:0.85rem 1rem;color:var(--text);vertical-align:middle}
+.coverage-table td:not(:first-child){text-align:center}
+.coverage-table .group-label{
+  font-weight:700;font-size:0.78rem;
+  color:var(--ageas-pink);background:#fdf0f7;
+  text-transform:uppercase;letter-spacing:0.08em;
+}
+.check{color:var(--success);font-size:1.1rem}
+.dash{color:#ccc}
+.highlight-col{background:rgba(228,0,124,0.04)}
+
+/* PLAN CARDS */
+.plan-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.plan-card{
+  border:2px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:all 0.3s;position:relative;
+}
+.plan-card:hover{border-color:var(--ageas-pink);transform:translateY(-4px);box-shadow:0 16px 40px rgba(228,0,124,0.12)}
+.plan-card.featured{border-color:var(--ageas-pink);box-shadow:0 8px 32px rgba(228,0,124,0.12)}
+.plan-badge{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--grad-pink-org);color:#fff;
+  font-size:0.65rem;font-weight:700;padding:0.2rem 0.6rem;
+  border-radius:100px;text-transform:uppercase;letter-spacing:0.06em;
+}
+.plan-top{background:var(--grad-full);padding:1.75rem}
+.plan-top h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:0.25rem;
+}
+.plan-top p{font-size:0.8rem;color:rgba(255,255,255,0.75);line-height:1.5}
+.plan-body{padding:1.5rem}
+.plan-features{list-style:none;margin-bottom:1.25rem}
+.plan-features li{
+  display:flex;align-items:flex-start;gap:0.6rem;
+  font-size:0.825rem;color:var(--gray);
+  padding:0.45rem 0;border-bottom:1px solid var(--border);
+}
+.plan-features li:last-child{border-bottom:none}
+.plan-features li::before{content:'✓';color:var(--ageas-teal);font-weight:700;font-size:0.75rem;flex-shrink:0;margin-top:2px}
+.btn-plan{
+  width:100%;background:var(--grad-pink-org);color:#fff;
+  border:none;padding:0.8rem;border-radius:6px;
+  font-weight:600;font-size:0.875rem;cursor:pointer;
+  transition:opacity 0.2s;
+}
+.btn-plan:hover{opacity:0.88}
+
+/* ── SIMULATOR ── */
+#simulador{
+  background:var(--offwhite);
+  position:relative;overflow:hidden;
+}
+#simulador::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 100% 50%, rgba(0,181,173,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 0% 80%, rgba(228,0,124,0.04) 0%, transparent 60%);
+}
+.sim-wrap{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start;
+}
+.sim-left .s-title{color:var(--text)}
+.sim-left .s-sub{color:var(--gray)}
+.sim-steps{margin-top:2.5rem;display:flex;flex-direction:column;gap:0}
+.sim-step{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1.25rem 0;
+  border-bottom:1px solid var(--border);
+}
+.sim-step:last-child{border-bottom:none}
+.step-num{
+  width:36px;height:36px;flex-shrink:0;
+  background:var(--grad-full);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:#fff;
+}
+.sim-step h4{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:0.2rem}
+.sim-step p{font-size:0.8rem;color:var(--gray);line-height:1.6}
+
+/* FORM */
+.sim-form{
+  background:#fff;border-radius:16px;
+  padding:2.25rem;
+  box-shadow:0 4px 24px rgba(0,0,0,0.07);
+  border:1.5px solid var(--border);
+}
+.form-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;color:var(--text);
+  margin-bottom:0.3rem;
+}
+.form-desc{font-size:0.82rem;color:var(--gray);padding-bottom:1.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.field{margin-bottom:1.1rem}
+.field label{
+  display:block;font-size:0.72rem;font-weight:700;
+  color:var(--text);text-transform:uppercase;
+  letter-spacing:0.08em;margin-bottom:0.4rem;
+}
+.field input,.field select{
+  width:100%;padding:0.7rem 0.9rem;
+  border:1.5px solid var(--border);border-radius:6px;
+  font-family:'Outfit',sans-serif;font-size:0.875rem;
+  color:var(--text);background:#fff;outline:none;
+  transition:border-color 0.2s;appearance:none;
+}
+.field input:focus,.field select:focus{border-color:var(--ageas-pink)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+
+/* SLIDER */
+.slider-wrap{position:relative}
+.slider-val{
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:0.35rem;
+}
+input[type=range]{
+  width:100%;height:5px;
+  accent-color:var(--ageas-pink);
+  border:none;padding:0;background:transparent;
+  cursor:pointer;
+}
+.slider-limits{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--gray);margin-top:0.2rem}
+
+/* PLAN PILLS */
+.plan-pills{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.1rem}
+.plan-pill{
+  padding:0.6rem;text-align:center;
+  border:1.5px solid var(--border);border-radius:6px;
+  font-size:0.8rem;font-weight:600;color:var(--gray);
+  cursor:pointer;transition:all 0.15s;background:#fff;
+}
+.plan-pill.active{border-color:var(--ageas-pink);background:var(--grad-pink-org);color:#fff}
+
+/* RESULT */
+.result-box{
+  background:linear-gradient(135deg, rgba(228,0,124,0.06) 0%, rgba(242,101,34,0.05) 50%, rgba(0,181,173,0.06) 100%);
+  border:2px solid transparent;
+  background-clip:padding-box;
+  border-radius:12px;padding:1.25rem;
+  margin-bottom:1.1rem;display:none;
+  position:relative;overflow:hidden;
+}
+.result-box::before{
+  content:'';position:absolute;inset:0;border-radius:12px;
+  padding:2px;
+  background:var(--grad-full);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+.result-box.show{display:block}
+.result-box .r-label{
+  font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;
+  background:var(--grad-full);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:0.25rem;
+}
+.result-box .r-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6rem;font-weight:700;
+  background:var(--grad-pink-org);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+}
+.result-box .r-price small{font-size:1rem;font-weight:400;color:var(--gray);font-family:'Outfit',sans-serif;-webkit-text-fill-color:var(--gray)}
+.result-box .r-note{font-size:0.72rem;color:var(--gray);margin-top:0.4rem}
+.result-details{display:flex;gap:0.75rem;margin-top:0.75rem}
+.r-detail{flex:1;border-radius:8px;padding:0.6rem 0.75rem;font-size:0.72rem;color:var(--gray)}
+.r-detail:nth-child(1){background:rgba(228,0,124,0.07);border:1px solid rgba(228,0,124,0.15)}
+.r-detail:nth-child(2){background:rgba(242,101,34,0.07);border:1px solid rgba(242,101,34,0.15)}
+.r-detail:nth-child(3){background:rgba(0,181,173,0.07);border:1px solid rgba(0,181,173,0.15)}
+.r-detail:nth-child(4){background:rgba(228,0,124,0.05);border:1px solid rgba(228,0,124,0.1)}
+.r-detail strong{display:block;color:var(--text);font-size:0.82rem;font-weight:700;margin-bottom:0.1rem}
+
+/* DIVIDER */
+.form-hr{border:none;border-top:1px solid var(--border);margin:1.25rem 0}
+
+/* WA BUTTON */
+.btn-wa{
+  width:100%;background:#25D366;color:#fff;
+  border:none;padding:0.95rem;border-radius:8px;
+  font-weight:700;font-size:0.9rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:0.6rem;
+  transition:all 0.2s;
+}
+.btn-wa:hover{background:#1dba5a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.35)}
+.btn-wa svg{width:20px;height:20px}
+.privacy{text-align:center;font-size:0.68rem;color:var(--gray);margin-top:0.6rem;display:flex;align-items:center;justify-content:center;gap:0.35rem}
+
+/* ── EXCLUSIONS ── */
+#exclusoes{background:var(--offwhite)}
+.excl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
+.excl-item{
+  display:flex;align-items:flex-start;gap:0.75rem;
+  background:#fff;border:1px solid var(--border);border-radius:10px;
+  padding:1rem 1.25rem;font-size:0.84rem;color:var(--gray);line-height:1.6;
+}
+.excl-x{
+  width:22px;height:22px;flex-shrink:0;
+  background:#fee2e2;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;color:#dc2626;font-weight:700;margin-top:1px;
+}
+
+/* ── FAQ ── */
+#faq{background:var(--white)}
+.faq-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem}
+.faq-list{display:flex;flex-direction:column;gap:0.75rem}
+.faq-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 1.35rem;
+  font-size:0.9rem;font-weight:600;color:var(--text);
+}
+.faq-q svg{width:18px;height:18px;color:var(--ageas-pink);flex-shrink:0;transition:transform 0.25s}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  font-size:0.84rem;color:var(--gray);line-height:1.75;
+  transition:max-height 0.3s,padding 0.3s;
+  padding:0 1.35rem;
+}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.35rem 1.25rem}
+
+/* ── CTA ── */
+.cta-section{
+  background:var(--grad-full);
+  padding:5rem 5%;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% 120%,rgba(0,0,0,0.15) 0%, transparent 60%);
+}
+.cta-section>*{position:relative;z-index:1}
+.cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:700;
+  color:#fff;margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto;
+}
+.cta-sub{color:rgba(255,255,255,0.85);font-size:1rem;margin-bottom:2.5rem}
+.btn-white{
+  background:#fff;color:var(--ageas-pink);
+  padding:0.9rem 2rem;border-radius:6px;
+  font-weight:700;font-size:0.95rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:all 0.2s;border:none;cursor:pointer;
+}
+.btn-white:hover{background:var(--offwhite);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+
+/* ── FOOTER ── */
+footer{background:var(--offwhite);padding:2.5rem 5%;border-top:2px solid transparent;border-image:var(--grad-full) 1}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;background:var(--grad-full);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-brand span{color:var(--ageas-pink)}
+.footer-info{font-size:0.75rem;color:var(--gray);text-align:right}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;animation:floatIn 0.5s 1s ease both}
+.wa-float a{
+  display:flex;align-items:center;gap:0.7rem;
+  background:#25D366;color:#fff;text-decoration:none;
+  padding:0.7rem 1.2rem;border-radius:50px;
+  font-weight:700;font-size:0.85rem;
+  box-shadow:0 8px 24px rgba(37,211,102,0.4);
+  transition:all 0.2s;
+}
+.wa-float a:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,0.5)}
+.wa-float svg{width:22px;height:22px;flex-shrink:0}
+@keyframes floatIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HAMBURGER ── */
+.nav-hamburger{
+  display:none;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:6px;
+}
+.nav-hamburger span{
+  display:block;width:24px;height:2px;
+  background:var(--text);border-radius:2px;transition:all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mobile-menu{
+  display:none;
+  position:fixed;top:66px;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.98);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  padding:1rem 5%;
+  flex-direction:column;gap:0;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  color:var(--text);text-decoration:none;
+  font-size:1rem;font-weight:500;
+  padding:0.9rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:active{color:var(--ageas-pink)}
+.mobile-menu .mob-cta{
+  margin-top:1rem;
+  background:var(--grad-pink-org);color:#fff !important;
+  padding:0.875rem !important;border-radius:6px;
+  text-align:center;justify-content:center;
+  font-weight:700;border-bottom:none !important;
+}
+
+/* ── TABLET (≤1024px) ── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding-top:100px;text-align:center;min-height:auto;padding-bottom:4rem}
+  .hero-actions{justify-content:center}
+  .hero-right{display:none}
+  .hero h1{font-size:clamp(2.2rem,5vw,3rem)}
+  .hero-sub{margin:0 auto 2.5rem}
+
+  .sim-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .sim-left{text-align:center}
+  .sim-left .s-sub{margin:0 auto}
+  .sim-steps{max-width:520px;margin:2.5rem auto 0}
+
+  .plan-cards{grid-template-columns:1fr 1fr;gap:1rem}
+
+  .faq-header{grid-template-columns:1fr;gap:1.5rem}
+  .faq-header > div:last-child{display:flex;flex-direction:column;align-items:flex-start}
+
+  .products-header{flex-direction:column;align-items:flex-start}
+
+  /* coverage table horizontal scroll */
+  .coverage-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+  .coverage-table{min-width:560px}
+}
+
+/* ── MOBILE (≤768px) ── */
+@media(max-width:768px){
+  /* Reviews */
+  #avaliacoes > div:last-child{grid-template-columns:1fr !important}
+
+  /* NAV */
+  nav{padding:0 4%}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-hamburger{display:flex}
+
+  /* SECTIONS */
+  section{padding:3rem 4%}
+
+  /* HERO */
+  .hero{padding:0 4%;padding-top:90px;padding-bottom:3rem}
+  .hero-badge{font-size:0.7rem;padding:0.3rem 0.75rem}
+  .hero h1{font-size:clamp(1.9rem,7vw,2.5rem)}
+  .hero-sub{font-size:0.9rem;max-width:100%}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:0.75rem}
+  .hero-actions .btn-primary,.hero-actions .btn-ghost{text-align:center;justify-content:center}
+
+  /* PLAN CARDS */
+  .plan-cards{grid-template-columns:1fr;gap:1rem}
+
+  /* SIMULATOR FORM */
+  .sim-form{padding:1.5rem}
+  .field-row{grid-template-columns:1fr}
+  .plan-pills{grid-template-columns:repeat(3,1fr)}
+
+  /* EXCLUSIONS */
+  .excl-grid{grid-template-columns:1fr}
+
+  /* FAQ */
+  .faq-header{gap:1rem}
+  .faq-list .faq-q{font-size:0.85rem;padding:1rem 1.1rem}
+  .faq-a{padding:0 1.1rem}
+  .faq-item.open .faq-a{padding:0 1.1rem 1rem}
+
+  /* COVERAGE TABLE */
+  .coverage-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;margin:0 -4%}
+  .coverage-table{min-width:520px;font-size:0.78rem}
+  .coverage-table thead th,.coverage-table td{padding:0.65rem 0.75rem}
+
+  /* VIVA PLUS form grid */
+  #vivaplus [style*="grid-template-columns: 1fr 1fr"]{display:block !important}
+  #vivaplus [style*="grid-template-columns: 1fr 1fr"] > *{margin-bottom:0}
+
+  /* Rendimento Flexível */
+  #rendimento-flexivel > div:nth-child(2){grid-template-columns:1fr !important}
+  #rendimento-flexivel > div:last-child{grid-template-columns:1fr !important;gap:1.5rem}
+
+  /* PORQUE EDGAR */
+  #porque-edgar [style*="grid-template-columns"]{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+  }
+
+  /* WA FLOAT — só ícone em mobile */
+  .wa-float a .wa-label{display:none}
+  .wa-float a{padding:0.85rem;border-radius:50%}
+
+  /* CTA section */
+  .cta-section{padding:3.5rem 4%}
+  .cta-title{font-size:1.6rem}
+
+  /* FOOTER */
+  footer{padding:2rem 4%}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-info{text-align:center}
+
+  /* HERO STAT GRID */
+  .hero-stat-grid{grid-template-columns:1fr 1fr}
+
+  /* S-SUB max width */
+  .s-sub{max-width:100% !important}
+
+  /* Viva Plus dark panel */
+  #vivaplus > div:last-child > div[style*="grid-template-columns: 1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ── SMALL MOBILE (≤480px) ── */
+@media(max-width:480px){
+  .hero h1{font-size:1.75rem}
+  .plan-pills{grid-template-columns:1fr 1fr 1fr;gap:0.4rem}
+  .plan-pill{font-size:0.75rem;padding:0.5rem 0.25rem}
+  .sim-form{padding:1.25rem}
+  .result-details{flex-wrap:wrap;gap:0.5rem}
+  .r-detail{min-width:calc(50% - 0.25rem)}
+  .hero-stat-grid{grid-template-columns:1fr 1fr}
+  .hero-stat .num{font-size:1.6rem}
+  section{padding:2.5rem 4%}
+  .s-title{font-size:1.6rem}
+  .coverage-table{min-width:480px;font-size:0.72rem}
+  .slider-val{font-size:1.2rem}
+  .result-box .r-price{font-size:2rem}
+  nav{height:58px}
+  .mobile-menu{top:58px}
+  .step-num{width:30px;height:30px;font-size:0.85rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div>
+      <div class="nav-name" style="text-transform:uppercase;letter-spacing:0.08em">Edgar Azevedo</div>
+      <div style="font-size:0.68rem;font-weight:500;color:var(--gray);letter-spacing:0.04em;margin-top:1px">Consultor Ageas Seguros</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#produto">Ritmo Vida</a></li>
+    <li><a href="#vivaplus">Viva Plus</a></li>
+    <li><a href="#rendimento-flexivel">Rendimento Flexível</a></li>
+    <li><a href="#simulador">Simulador</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#simulador" class="nav-cta">Simular grátis</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#produto" onclick="closeMenu()">Ritmo Vida <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></a>
+  <a href="#vivaplus" onclick="closeMenu()">Viva Plus <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></a>
+  <a href="#rendimento-flexivel" onclick="closeMenu()">Rendimento Flexível <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></a>
+  <a href="#simulador" onclick="closeMenu()">Simulador <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></a>
+  <a href="#avaliacoes" onclick="closeMenu()">Avaliações ⭐ <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></a>
+  <a href="#faq" onclick="closeMenu()">FAQ <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg></a>
+  <a href="#simulador" class="mob-cta" onclick="closeMenu()">Simular grátis — é rápido</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Disponível em todo o território nacional — Continente e Ilhas</div>
+    <h1>O seguro de vida<br>que a sua família<br><span class="accent">merece mesmo.</span></h1>
+    <p class="hero-sub">Proteção real, prémios transparentes e atendimento personalizado. Simule em segundos e receba proposta via WhatsApp.</p>
+    <div class="hero-actions">
+      <a href="#simulador" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg>
+        Simular agora — grátis
+      </a>
+      <a href="#produto" class="btn-ghost">Ver coberturas</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-title">Ritmo Vida Família · Ageas Seguros</div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat"><span class="num">3</span><span class="lbl">Planos disponíveis</span></div>
+        <div class="hero-stat"><span class="num">1M€</span><span class="lbl">Capital máximo</span></div>
+        <div class="hero-stat"><span class="num">24h</span><span class="lbl">Cobertura global</span></div>
+        <div class="hero-stat"><span class="num">98%</span><span class="lbl">Satisfação clientes</span></div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-trust">
+        <div class="trust-row">
+          <div class="trust-icon-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          Autorizado pela ASF — Autoridade de Supervisão de Seguros
+        </div>
+        <div class="trust-row">
+          <div class="trust-icon-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+          Dados protegidos · RGPD em conformidade
+        </div>
+        <div class="trust-row">
+          <div class="trust-icon-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+          Resposta via WhatsApp em menos de 15 minutos
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTO -->
+<section id="produto">
+  <div class="planos-header">
+    <div>
+      <span class="s-tag">Ritmo Vida Família · Ageas</span>
+      <h2 class="s-title">Coberturas por plano</h2>
+      <p class="s-sub">Escolha o nível de proteção certo para si e para a sua família.</p>
+    </div>
+  </div>
+
+  <div class="coverage-table-wrap">
+  <table class="coverage-table">
+    <thead>
+      <tr>
+        <th style="width:40%">Garantia</th>
+        <th>Base</th>
+        <th class="highlight-col">Mais</th>
+        <th>Top</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" class="group-label" style="padding:0.6rem 1rem">Morte</td></tr>
+      <tr>
+        <td>Morte por Doença</td>
+        <td><span class="check">✓</span> 100% CS</td>
+        <td class="highlight-col"><span class="check">✓</span> 100% CS</td>
+        <td><span class="check">✓</span> 100% CS</td>
+      </tr>
+      <tr>
+        <td>Morte por Acidente</td>
+        <td><span class="check">✓</span> 100% CS</td>
+        <td class="highlight-col"><span class="check">✓</span> 200% CS</td>
+        <td><span class="check">✓</span> 200% CS</td>
+      </tr>
+      <tr><td colspan="4" class="group-label" style="padding:0.6rem 1rem">Invalidez / Dependência</td></tr>
+      <tr>
+        <td>Dependência por Doença</td>
+        <td><span class="check">✓</span> 100% CS</td>
+        <td class="highlight-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span> 100% CS</td>
+      </tr>
+      <tr>
+        <td>Dependência por Acidente</td>
+        <td><span class="check">✓</span> 100% CS</td>
+        <td class="highlight-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span> 200% CS</td>
+      </tr>
+      <tr>
+        <td>IDPAC + Dependência (Doença, 60%)</td>
+        <td><span class="check">✓</span> 100% CS</td>
+        <td class="highlight-col"><span class="check">✓</span> 100% CS</td>
+        <td><span class="dash">—</span></td>
+      </tr>
+      <tr>
+        <td>IDPAC por Acidente (60%/66%)</td>
+        <td><span class="check">✓</span> 100% CS</td>
+        <td class="highlight-col"><span class="check">✓</span> 200% CS</td>
+        <td><span class="dash">—</span></td>
+      </tr>
+      <tr>
+        <td>Invalidez Definitiva Profissão (IDPAD)</td>
+        <td><span class="dash">—</span></td>
+        <td class="highlight-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span> 25%–200% CS*</td>
+      </tr>
+      <tr><td colspan="4" class="group-label" style="padding:0.6rem 1rem">Benefícios Adicionais (Top)</td></tr>
+      <tr>
+        <td>Incapacidade Temp. para o Trabalho</td>
+        <td><span class="dash">—</span></td>
+        <td class="highlight-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span> 0,068%/dia</td>
+      </tr>
+      <tr>
+        <td>Hospitalização (até 45 dias/ano)</td>
+        <td><span class="dash">—</span></td>
+        <td class="highlight-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span> 0,13%/dia</td>
+      </tr>
+      <tr>
+        <td>Exoneração de pagamento de prémios</td>
+        <td><span class="dash">—</span></td>
+        <td class="highlight-col"><span class="dash">—</span></td>
+        <td><span class="check">✓</span> Incluído</td>
+      </tr>
+    </tbody>
+  </table>
+  </div><!-- /coverage-table-wrap -->
+  <p style="font-size:0.72rem;color:var(--gray);margin-top:0.75rem">*IDPAD — percentagem varia conforme a idade: antes dos 35 anos = 200%, 36–45 = 150%, 46–55 = 100%, 56–60 = 50%, 61–67 = 25%. CS = Capital Seguro.</p>
+
+  <div class="plan-cards">
+    <div class="plan-card">
+      <div class="plan-top">
+        <h3>Base</h3>
+        <p>Proteção essencial contra morte e invalidez para quem precisa de cobertura sólida e acessível.</p>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-features">
+          <li>Morte por doença e acidente (100% CS)</li>
+          <li>Dependência por doença e acidente</li>
+          <li>IDPAC com desvalorização 60% ou 66%</li>
+        </ul>
+        <button class="btn-plan" onclick="goSim('Base')">Simular plano Base</button>
+      </div>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-badge">Recomendado</div>
+      <div class="plan-top">
+        <h3>Mais</h3>
+        <p>Cobertura alargada por acidente com capital duplicado. Ideal para famílias ativas.</p>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-features">
+          <li>Morte por acidente: 200% CS</li>
+          <li>IDPAC acidente: 200% CS</li>
+          <li>Tudo do plano Base incluído</li>
+        </ul>
+        <button class="btn-plan" onclick="goSim('Mais')">Simular plano Mais</button>
+      </div>
+    </div>
+    <div class="plan-card">
+      <div class="plan-top">
+        <h3>Top</h3>
+        <p>A proteção mais completa. Inclui subsídios diários, hospitalização e exoneração de prémios.</p>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-features">
+          <li>IDPAD até 200% CS (antes dos 35 anos)</li>
+          <li>Subsídio diário de incapacidade</li>
+          <li>Hospitalização até 45 dias/ano</li>
+          <li>Exoneração de pagamento de prémios</li>
+        </ul>
+        <button class="btn-plan" onclick="goSim('Top')">Simular plano Top</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section id="simulador">
+  <div class="sim-wrap">
+    <div class="sim-left">
+      <span class="s-tag">Simulador Online</span>
+      <h2 class="s-title">Calcule o seu prémio<br>em tempo real.</h2>
+      <p class="s-sub">Com base na tarifa oficial da Ageas. Valores reais, sem surpresas.</p>
+      <div class="sim-steps">
+        <div class="sim-step">
+          <div class="step-num">1</div>
+          <div><h4>Escolha o seu plano</h4><p>Base, Mais ou Top — conforme o nível de proteção pretendido.</p></div>
+        </div>
+        <div class="sim-step">
+          <div class="step-num">2</div>
+          <div><h4>Indique a sua idade e capital</h4><p>O prémio é calculado com a tarifa oficial por 1.000€ de capital seguro.</p></div>
+        </div>
+        <div class="sim-step">
+          <div class="step-num">3</div>
+          <div><h4>Receba proposta via WhatsApp</h4><p>O Edgar Azevedo entra em contacto em menos de 15 minutos.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-form">
+      <div class="form-title">Simulação Ritmo Vida Família</div>
+      <p class="form-desc">Preenchimento rápido · Resposta imediata via WhatsApp</p>
+
+      <!-- PLANO -->
+      <div class="field">
+        <label>Plano</label>
+        <div class="plan-pills">
+          <button class="plan-pill active" onclick="setPlan(this,'Base')">Base</button>
+          <button class="plan-pill" onclick="setPlan(this,'Mais')">Mais</button>
+          <button class="plan-pill" onclick="setPlan(this,'Top')">Top</button>
+        </div>
+      </div>
+
+      <!-- BASE SUBTIPO (só aparece em Base) -->
+      <div class="field" id="base-subtipo-field">
+        <label>Modalidade Base</label>
+        <select id="base-subtipo" onchange="calcPremium()">
+          <option value="morte_idparc_60">Morte + IDPARC (60%)</option>
+          <option value="morte_idparc_66">Morte + IDPARC (66%)</option>
+          <option value="morte_dependencia">Morte + Dependência</option>
+        </select>
+      </div>
+
+      <!-- DADOS PESSOAIS -->
+      <div class="field-row">
+        <div class="field">
+          <label>Nome</label>
+          <input type="text" id="nome" placeholder="João Silva">
+        </div>
+        <div class="field">
+          <label>Telemóvel</label>
+          <input type="tel" id="tel" placeholder="+351 9XX XXX XXX">
+        </div>
+      </div>
+
+      <!-- IDADE -->
+      <div class="field">
+        <label>Idade</label>
+        <div class="slider-wrap">
+          <div class="slider-val" id="age-display">35 anos</div>
+          <input type="range" id="slider-age" min="18" max="84" value="35" oninput="updateAge(this.value)">
+          <div class="slider-limits"><span>18</span><span>84</span></div>
+        </div>
+      </div>
+
+      <!-- CAPITAL -->
+      <div class="field">
+        <label>Capital Seguro</label>
+        <div class="slider-wrap">
+          <div class="slider-val" id="cap-display">100.000 €</div>
+          <input type="range" id="slider-cap" min="10000" max="1000000" step="5000" value="100000" oninput="updateCap(this.value)">
+          <div class="slider-limits"><span>10.000€</span><span>1.000.000€</span></div>
+        </div>
+      </div>
+
+      <hr class="form-hr">
+
+      <!-- RESULTADO -->
+      <div class="result-box" id="result-box">
+        <div class="r-label">Prémio mensal estimado</div>
+        <div class="r-price" id="r-price">—<small>/mês</small></div>
+        <div class="result-details">
+          <div class="r-detail"><strong id="r-plano">—</strong>Plano</div>
+          <div class="r-detail"><strong id="r-idade">—</strong>Idade</div>
+          <div class="r-detail"><strong id="r-cap">—</strong>Capital</div>
+          <div class="r-detail"><strong id="r-tarifa">—</strong>Tarifa/1000€</div>
+        </div>
+        <div class="r-note">⚠️ Valor estimado com base na tarifa oficial Ageas. Prémio definitivo sujeito a condições de saúde.</div>
+      </div>
+
+      <button class="btn-wa" onclick="sendWhatsApp()">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L.057 23.5l5.826-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.373l-.36-.213-3.72.976.994-3.632-.234-.373A9.786 9.786 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182c5.432 0 9.818 4.386 9.818 9.818 0 5.432-4.386 9.818-9.818 9.818z"/></svg>
+        Receber proposta via WhatsApp
+      </button>
+      <p class="privacy">🔒 Dados enviados apenas para o Edgar Azevedo. Nunca partilhados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIVA PLUS -->
+<section id="simulador">
+  <div class="sim-wrap">
+    <div class="sim-left">
+      <span class="s-tag">Simulador Online</span>
+      <h2 class="s-title">Calcule o seu prémio<br>em tempo real.</h2>
+      <p class="s-sub">Com base na tarifa oficial da Ageas. Valores reais, sem surpresas.</p>
+      <div class="sim-steps">
+        <div class="sim-step">
+          <div class="step-num">1</div>
+          <div><h4>Escolha o seu plano</h4><p>Base, Mais ou Top — conforme o nível de proteção pretendido.</p></div>
+        </div>
+        <div class="sim-step">
+          <div class="step-num">2</div>
+          <div><h4>Indique a sua idade e capital</h4><p>O prémio é calculado com a tarifa oficial por 1.000€ de capital seguro.</p></div>
+        </div>
+        <div class="sim-step">
+          <div class="step-num">3</div>
+          <div><h4>Receba proposta via WhatsApp</h4><p>O Edgar Azevedo entra em contacto em menos de 15 minutos.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-form">
+      <div class="form-title">Simulação Ritmo Vida Família</div>
+      <p class="form-desc">Preenchimento rápido · Resposta imediata via WhatsApp</p>
+
+      <!-- PLANO -->
+      <div class="field">
+        <label>Plano</label>
+        <div class="plan-pills">
+          <button class="plan-pill active" onclick="setPlan(this,'Base')">Base</button>
+          <button class="plan-pill" onclick="setPlan(this,'Mais')">Mais</button>
+          <button class="plan-pill" onclick="setPlan(this,'Top')">Top</button>
+        </div>
+      </div>
+
+      <!-- BASE SUBTIPO (só aparece em Base) -->
+      <div class="field" id="base-subtipo-field">
+        <label>Modalidade Base</label>
+        <select id="base-subtipo" onchange="calcPremium()">
+          <option value="morte_idparc_60">Morte + IDPARC (60%)</option>
+          <option value="morte_idparc_66">Morte + IDPARC (66%)</option>
+          <option value="morte_dependencia">Morte + Dependência</option>
+        </select>
+      </div>
+
+      <!-- DADOS PESSOAIS -->
+      <div class="field-row">
+        <div class="field">
+          <label>Nome</label>
+          <input type="text" id="nome" placeholder="João Silva">
+        </div>
+        <div class="field">
+          <label>Telemóvel</label>
+          <input type="tel" id="tel" placeholder="+351 9XX XXX XXX">
+        </div>
+      </div>
+
+      <!-- IDADE -->
+      <div class="field">
+        <label>Idade</label>
+        <div class="slider-wrap">
+          <div class="slider-val" id="age-display">35 anos</div>
+          <input type="range" id="slider-age" min="18" max="84" value="35" oninput="updateAge(this.value)">
+          <div class="slider-limits"><span>18</span><span>84</span></div>
+        </div>
+      </div>
+
+      <!-- CAPITAL -->
+      <div class="field">
+        <label>Capital Seguro</label>
+        <div class="slider-wrap">
+          <div class="slider-val" id="cap-display">100.000 €</div>
+          <input type="range" id="slider-cap" min="10000" max="1000000" step="5000" value="100000" oninput="updateCap(this.value)">
+          <div class="slider-limits"><span>10.000€</span><span>1.000.000€</span></div>
+        </div>
+      </div>
+
+      <hr class="form-hr">
+
+      <!-- RESULTADO -->
+      <div class="result-box" id="result-box">
+        <div class="r-label">Prémio mensal estimado</div>
+        <div class="r-price" id="r-price">—<small>/mês</small></div>
+        <div class="result-details">
+          <div class="r-detail"><strong id="r-plano">—</strong>Plano</div>
+          <div class="r-detail"><strong id="r-idade">—</strong>Idade</div>
+          <div class="r-detail"><strong id="r-cap">—</strong>Capital</div>
+          <div class="r-detail"><strong id="r-tarifa">—</strong>Tarifa/1000€</div>
+        </div>
+        <div class="r-note">⚠️ Valor estimado com base na tarifa oficial Ageas. Prémio definitivo sujeito a condições de saúde.</div>
+      </div>
+
+      <button class="btn-wa" onclick="sendWhatsApp()">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L.057 23.5l5.826-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.373l-.36-.213-3.72.976.994-3.632-.234-.373A9.786 9.786 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182c5.432 0 9.818 4.386 9.818 9.818 0 5.432-4.386 9.818-9.818 9.818z"/></svg>
+        Receber proposta via WhatsApp
+      </button>
+      <p class="privacy">🔒 Dados enviados apenas para o Edgar Azevedo. Nunca partilhados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIVA PLUS -->
+<section id="vivaplus" style="background:var(--offwhite)">
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem">
+    <div>
+      <span class="s-tag">Segundo Produto · Ageas</span>
+      <h2 class="s-title">Viva Plus</h2>
+      <p class="s-sub">Esteja um passo à frente dos imprevistos. Proteção ao longo da vida contra doenças graves, morte e invalidez — com antecipação de capital quando mais precisa.</p>
+    </div>
+    <div style="background:#fff;border:1.5px solid rgba(228,0,124,0.2);border-radius:10px;padding:0.9rem 1.25rem;font-size:0.82rem;color:var(--text);max-width:280px;box-shadow:0 2px 8px rgba(228,0,124,0.06)">
+      <strong style="color:var(--ageas-pink);display:block;margin-bottom:0.25rem">💬 Prémio sob consulta</strong>
+      Preço fixo por escalão etário. Peça simulação ao Edgar via WhatsApp.
+    </div>
+  </div>
+
+  <!-- INTRO + VANTAGENS -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem">
+    <div style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:2rem;box-shadow:0 2px 10px rgba(0,0,0,0.04)">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:1rem">O que é o Viva Plus?</h3>
+      <p style="font-size:0.875rem;color:var(--gray);line-height:1.8;margin-bottom:1rem">Um seguro que o acompanha ao longo da vida e o protege em caso de doenças graves. Se lhe for diagnosticada uma doença grave e ficar incapacitado para trabalhar, <strong style="color:var(--text)">antecipamos 50% do capital seguro</strong> para que não tenha de se preocupar com os custos de tratamento.</p>
+      <p style="font-size:0.875rem;color:var(--gray);line-height:1.8">Proporciona também à sua família maior estabilidade financeira, protegendo-o em caso de morte ou invalidez.</p>
+      <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;gap:0.5rem;flex-wrap:wrap">
+        <span style="background:rgba(228,0,124,0.07);color:var(--ageas-pink);font-size:0.72rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:100px;border:1px solid rgba(228,0,124,0.15)">Renovável anualmente</span>
+        <span style="background:rgba(0,181,173,0.07);color:var(--ageas-teal-dark);font-size:0.72rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:100px;border:1px solid rgba(0,181,173,0.2)">Preço fixo por escalão</span>
+        <span style="background:rgba(242,101,34,0.07);color:var(--ageas-orange);font-size:0.72rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:100px;border:1px solid rgba(242,101,34,0.2)">27 Doenças Graves</span>
+      </div>
+    </div>
+    <div style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:2rem;box-shadow:0 2px 10px rgba(0,0,0,0.04)">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:1.25rem">Vantagens</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="width:36px;height:36px;background:rgba(228,0,124,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+          <div><div style="font-size:0.875rem;font-weight:700;color:var(--text);margin-bottom:0.15rem">Cobertura de Doenças Graves</div><div style="font-size:0.8rem;color:var(--gray);line-height:1.6">Antecipação de 50% do capital até aos 65 anos em caso de doença grave diagnosticada.</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="width:36px;height:36px;background:rgba(242,101,34,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="var(--ageas-orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div><div style="font-size:0.875rem;font-weight:700;color:var(--text);margin-bottom:0.15rem">Flexibilidade de Pagamento</div><div style="font-size:0.8rem;color:var(--gray);line-height:1.6">Mensal (+3%), Trimestral (+2%) ou Semestral (+1%).</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem">
+          <div style="width:36px;height:36px;background:rgba(0,181,173,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="var(--ageas-teal)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          <div><div style="font-size:0.875rem;font-weight:700;color:var(--text);margin-bottom:0.15rem">Preço Fixo por Escalão</div><div style="font-size:0.8rem;color:var(--gray);line-height:1.6">Valor mantém-se fixo enquanto permanecer no mesmo escalão etário.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARACTERÍSTICAS -->
+  <div style="background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:2.5rem;box-shadow:0 2px 10px rgba(0,0,0,0.04)">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:1.5rem">Características Técnicas</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem">
+      <div style="background:var(--offwhite);border-radius:10px;padding:1.1rem"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ageas-pink);margin-bottom:0.4rem">Prazo</div><div style="font-size:0.85rem;font-weight:600;color:var(--text)">1 ano renovável</div><div style="font-size:0.75rem;color:var(--gray);margin-top:0.1rem">Até aos 70 anos</div></div>
+      <div style="background:var(--offwhite);border-radius:10px;padding:1.1rem"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ageas-orange);margin-bottom:0.4rem">Capital</div><div style="font-size:0.85rem;font-weight:600;color:var(--text)">10.000€ — 200.000€</div><div style="font-size:0.75rem;color:var(--gray);margin-top:0.1rem">Mínimo e máximo</div></div>
+      <div style="background:var(--offwhite);border-radius:10px;padding:1.1rem"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ageas-teal-dark);margin-bottom:0.4rem">Subscrição</div><div style="font-size:0.85rem;font-weight:600;color:var(--text)">18 — 66 anos</div><div style="font-size:0.75rem;color:var(--gray);margin-top:0.1rem">64 anos no plano Top</div></div>
+      <div style="background:var(--offwhite);border-radius:10px;padding:1.1rem"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ageas-pink);margin-bottom:0.4rem">Permanência</div><div style="font-size:0.85rem;font-weight:600;color:var(--text)">70 anos (Morte)</div><div style="font-size:0.75rem;color:var(--gray);margin-top:0.1rem">65 D.Graves · 67 IDPAC</div></div>
+      <div style="background:linear-gradient(135deg,rgba(228,0,124,0.06),rgba(0,181,173,0.06));border:1px solid rgba(228,0,124,0.12);border-radius:10px;padding:1.1rem"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ageas-pink);margin-bottom:0.4rem">Em Vida</div><div style="font-size:0.85rem;font-weight:700;color:var(--text)">50% do capital</div><div style="font-size:0.75rem;color:var(--gray);margin-top:0.1rem">Antecipação até 65 anos</div></div>
+      <div style="background:linear-gradient(135deg,rgba(242,101,34,0.06),rgba(0,181,173,0.06));border:1px solid rgba(242,101,34,0.12);border-radius:10px;padding:1.1rem"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ageas-orange);margin-bottom:0.4rem">Em caso de Morte</div><div style="font-size:0.85rem;font-weight:700;color:var(--text)">100% do capital</div><div style="font-size:0.75rem;color:var(--gray);margin-top:0.1rem">Aos beneficiários</div></div>
+    </div>
+  </div>
+
+  <!-- COBERTURAS TABLE -->
+  <div style="margin-bottom:2.5rem">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:1.25rem">Coberturas por Plano</h3>
+    <div class="coverage-table-wrap">
+    <table class="coverage-table">
+      <thead><tr><th style="width:42%">Garantia</th><th>Vida Base</th><th class="highlight-col">Vida Mais</th><th>Vida Top</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Morte</strong> (garantia principal)</td><td><span class="check">✓</span> Incluído</td><td class="highlight-col"><span class="check">✓</span> Incluído</td><td><span class="check">✓</span> Incluído</td></tr>
+        <tr><td>Invalidez Definitiva — IDPAC (60%)</td><td><span class="check">✓</span> Incluído</td><td class="highlight-col"><span class="check">✓</span> Incluído</td><td><span class="check">✓</span> Incluído</td></tr>
+        <tr><td>Invalidez Definitiva — IDPAC (66%)</td><td><span class="check">✓</span> Opcional</td><td class="highlight-col"><span class="dash">—</span></td><td><span class="dash">—</span></td></tr>
+        <tr><td>Morte por Acidente</td><td><span class="dash">—</span></td><td class="highlight-col"><span class="check">✓</span> Incluído</td><td><span class="check">✓</span> Incluído</td></tr>
+        <tr><td><strong>Doenças Graves</strong> — antecipação 50% capital</td><td><span class="dash">—</span></td><td class="highlight-col"><span class="dash">—</span></td><td><span class="check">✓</span> 27 doenças</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- DOENÇAS GRAVES -->
+  <div style="margin-bottom:2.5rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:1rem">
+      <div><span class="s-tag">Plano Vida Top</span><h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--text)">27 Doenças Graves cobertas</h3></div>
+      <button onclick="toggleDoencas()" id="btn-doencas" style="background:var(--grad-pink-org);color:#fff;border:none;padding:0.6rem 1.2rem;border-radius:6px;font-size:0.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.5rem">
+        <span id="btn-doencas-txt">Ver todas as doenças</span>
+        <svg id="btn-doencas-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="transition:transform 0.25s"><path d="M19 9l-7 7-7-7"/></svg>
+      </button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0.6rem;margin-bottom:0.75rem">
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Cancro</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Enfarte do Miocárdio</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> AVC com sintomas permanentes</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Bypass Coronário</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Doença Renal Terminal</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Transplante de Órgão</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Paralisia dos Membros</div>
+      <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Perda profunda de Visão</div>
+      <div style="background:var(--lightgray);border:1px solid var(--border);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--gray);display:flex;align-items:center;gap:0.5rem">+ 19 mais doenças ↓</div>
+    </div>
+    <div id="doencas-full" style="display:none">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0.6rem">
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Cirurgia de Válvulas Cardíacas</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Cirurgia da Aorta</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Esclerose Múltipla</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Doença de Alzheimer (antes 65 anos)</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Anemia Aplásica grave</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Tumor Cerebral Benigno</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Doença Hepática Grave (Child-Pugh B/C)</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Doença Pulmonar Crónica grave</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Coma com sintomas persistentes</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Surdez permanente e irreversível</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Hepatite Viral Fulminante</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Traumatismo Craniano Grave</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Infeção VIH por transfusão sanguínea</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Perda de Membros (amputação 2+)</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Perda da Fala permanente</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Queimaduras 3.º grau (≥20%)</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Doença do Neurónio Motor</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Meningite Bacteriana grave</div>
+        <div style="background:rgba(228,0,124,0.06);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:0.7rem 1rem;font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.5rem"><span style="color:var(--ageas-pink);font-weight:700">♥</span> Doença de Parkinson idiopática (antes 65)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEDIDO SIMULAÇÃO -->
+  <div style="background:var(--offwhite);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+    <div>
+      <span class="s-tag">Viva Plus · Pedido de Simulação</span>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:0.75rem;line-height:1.2">Prémio calculado<br>especialmente para si.</h3>
+      <p style="font-size:0.875rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem">Preço fixo por escalão etário. O Edgar analisa o seu perfil e envia-lhe a proposta em minutos via WhatsApp.</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray)"><div style="width:28px;height:28px;background:rgba(228,0,124,0.1);border:1px solid rgba(228,0,124,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>Resposta via WhatsApp em menos de 15 minutos</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray)"><div style="width:28px;height:28px;background:rgba(228,0,124,0.1);border:1px solid rgba(228,0,124,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>Sem compromisso — só recebe proposta</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray)"><div style="width:28px;height:28px;background:rgba(228,0,124,0.1);border:1px solid rgba(228,0,124,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>Atendimento personalizado pelo Edgar Azevedo</div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:12px;padding:2rem;border:1.5px solid var(--border)">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:0.3rem">Pedido de Simulação</div>
+      <p style="font-size:0.78rem;color:var(--gray);margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)">Viva Plus · Ageas Seguros</p>
+      <div class="field-row" style="margin-bottom:1rem">
+        <div class="field"><label>Nome</label><input type="text" id="vp-nome" placeholder="João Silva"></div>
+        <div class="field"><label>Telemóvel</label><input type="tel" id="vp-tel" placeholder="+351 9XX XXX XXX"></div>
+      </div>
+      <div class="field-row" style="margin-bottom:1rem">
+        <div class="field"><label>Idade</label><input type="number" id="vp-idade" placeholder="Ex: 38" min="18" max="66"></div>
+        <div class="field"><label>Plano</label><select id="vp-plano"><option value="Vida Base">Vida Base</option><option value="Vida Mais">Vida Mais</option><option value="Vida Top — c/ Doenças Graves" selected>Vida Top (c/ D. Graves)</option></select></div>
+      </div>
+      <div class="field-row" style="margin-bottom:1.25rem">
+        <div class="field"><label>Capital Seguro</label><select id="vp-capital"><option value="10.000€ – 50.000€">10.000€ – 50.000€</option><option value="50.000€ – 100.000€" selected>50.000€ – 100.000€</option><option value="100.000€ – 200.000€">100.000€ – 200.000€</option></select></div>
+        <div class="field"><label>Periodicidade</label><select id="vp-periodo"><option value="Anual">Anual</option><option value="Semestral (+1%)">Semestral (+1%)</option><option value="Trimestral (+2%)">Trimestral (+2%)</option><option value="Mensal (+3%)" selected>Mensal (+3%)</option></select></div>
+      </div>
+      <button class="btn-wa" onclick="sendVivaPlusWA()">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L.057 23.5l5.826-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.373l-.36-.213-3.72.976.994-3.632-.234-.373A9.786 9.786 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182c5.432 0 9.818 4.386 9.818 9.818 0 5.432-4.386 9.818-9.818 9.818z"/></svg>
+        Pedir simulação via WhatsApp
+      </button>
+      <p class="privacy">🔒 Dados enviados apenas para o Edgar Azevedo.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- EXCLUSÕES -->
+<section id="exclusoes">
+  <span class="s-tag">Exclusões e Limitações</span>
+  <h2 class="s-title">O que não está coberto</h2>
+  <p class="s-sub">Transparência total. Estas situações estão excluídas conforme o artigo 3.º das Condições Gerais Ritmo Vida Família.</p>
+  <div class="excl-grid">
+    <div class="excl-item"><div class="excl-x">✕</div>Suicídio nos primeiros 2 anos de contrato ou após reposição em vigor</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Doenças preexistentes não declaradas</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Ato intencional, mutilação voluntária, embriaguez ou uso de estupefacientes fora de prescrição médica</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Atividades profissionais ou desportivas manifestamente perigosas (bombeiro, construção civil, etc.)</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Deslocação para países com epidemia declarada pelas autoridades de saúde</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Desporto profissional ou amador remunerado</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Alpinismo, escalada, espeleologia, montanhismo e atividades de altitude</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Desportos aéreos: paraquedismo, balonismo, asa delta, parapente, sky diving, base jumping, bungee jumping</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Caça de animais ferozes, tauromaquia, caça submarina e mergulho</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Rappel, slide, canoagem, rafting e descidas em correntes de água</div>
+    <div class="excl-item"><div class="excl-x">✕</div>Desportos de combate e artes marciais</div>
+    <div class="excl-item" style="background:rgba(228,0,124,0.06);border-color:rgba(228,0,124,0.2)">
+      <div class="excl-x" style="background:rgba(228,0,124,0.15);color:var(--ageas-pink)">!</div>
+      <span style="color:var(--text)">Em caso de dúvida, fale com o Edgar antes de contratar. A transparência protege-o.</span>
+    </div>
+  </div>
+</section>
+
+<!-- RENDIMENTO FLEXÍVEL -->
+<section id="rendimento-flexivel" style="background:var(--white)">
+
+  <!-- HEADER -->
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem">
+    <div>
+      <span class="s-tag">Terceiro Produto · Ageas Pensões</span>
+      <h2 class="s-title">Rendimento Flexível</h2>
+      <p class="s-sub">O reforço para a reforma que deseja. Transforme a sua poupança numa fonte de rendimento adicional na reforma — ajustada ao seu perfil de risco e gerida de forma prudente.</p>
+    </div>
+    <div style="background:#fff;border:1px solid rgba(228,0,124,0.2);border-radius:10px;padding:0.9rem 1.25rem;font-size:0.82rem;color:var(--text);max-width:260px">
+      <strong style="color:var(--ageas-pink);display:block;margin-bottom:0.25rem">💬 Proposta personalizada</strong>
+      Valor e rendimento calculados com base no seu perfil. Contacte o Edgar para simulação gratuita.
+    </div>
+  </div>
+
+  <!-- INTRO DOIS PRODUTOS -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2.5rem">
+
+    <!-- Card Rendimento Flexível -->
+    <div style="background:#fff;border:2px solid rgba(228,0,124,0.2);border-radius:14px;overflow:hidden">
+      <div style="background:var(--grad-full);padding:1.75rem">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:0.3rem">Rendimento Flexível</h3>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.5">Poupança para a reforma com rendimento mensal ajustável</p>
+      </div>
+      <div style="padding:1.5rem">
+        <ul style="list-style:none;margin-bottom:1.25rem">
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-pink);font-weight:700;flex-shrink:0">✓</span>Complemento de reforma ajustado ao seu perfil</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-pink);font-weight:700;flex-shrink:0">✓</span>Pode decidir quando e quanto recebe de pensão</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-pink);font-weight:700;flex-shrink:0">✓</span>Liberdade para designar beneficiários (recebem 100% do saldo remanescente)</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-pink);font-weight:700;flex-shrink:0">✓</span>Acesso permanente ao saldo, projeções e carteira de fundos</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-pink);font-weight:700;flex-shrink:0">✓</span>3 perfis de risco: Segurança, Valorização, Ações</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0"><span style="color:var(--ageas-pink);font-weight:700;flex-shrink:0">✓</span>Taxa anual média estimada: <strong style="color:var(--text)">1,71%</strong> (Grau de Risco 3)</li>
+        </ul>
+        <div style="background:var(--lightgray);border-radius:8px;padding:1rem;font-size:0.8rem;color:var(--gray);line-height:1.6">
+          <strong style="color:var(--text);display:block;margin-bottom:0.3rem">Durante a vigência do contrato pode:</strong>
+          Alterar o valor da pensão · Alterar o perfil de investimento · Suspender temporariamente o recebimento · Converter o saldo em renda vitalícia · Transferir para outro fundo de pensões · Receber o saldo existente a qualquer momento
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Mais Valias -->
+    <div style="background:#fff;border:2px solid rgba(228,0,124,0.2);border-radius:14px;overflow:hidden">
+      <div style="background:var(--grad-full);padding:1.75rem">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:0.3rem">Rendimento Flexível — Mais Valias</h3>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);line-height:1.5">Para quem vende a habitação própria e permanente</p>
+      </div>
+      <div style="padding:1.5rem">
+        <div style="background:rgba(228,0,124,0.05);border:1px solid rgba(228,0,124,0.15);border-radius:8px;padding:1rem;margin-bottom:1.25rem;font-size:0.82rem;color:var(--text);line-height:1.7">
+          <strong style="color:var(--ageas-pink)">Exclusão fiscal única:</strong> Aplique o valor total ou parcial da venda da sua habitação sem tributação de mais-valias imobiliárias, num rendimento regular mensal.
+        </div>
+        <ul style="list-style:none;margin-bottom:1.25rem">
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-teal-dark);font-weight:700;flex-shrink:0">✓</span>Pensão regular com valor anual máximo de <strong style="color:var(--text)">7,5%</strong> do valor investido</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-teal-dark);font-weight:700;flex-shrink:0">✓</span>Exclusão da tributação do imposto de Mais-Valias Imobiliárias</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0;border-bottom:1px solid var(--border)"><span style="color:var(--ageas-teal-dark);font-weight:700;flex-shrink:0">✓</span>Pode utilizar como complemento de reforma ou para pagamento de residências assistidas</li>
+          <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.835rem;color:var(--gray);padding:0.45rem 0"><span style="color:var(--ageas-teal-dark);font-weight:700;flex-shrink:0">✓</span>Estratégia Ciclo de Vida — adapta-se às várias fases do cliente</li>
+        </ul>
+
+        <!-- Exemplo prático -->
+        <div style="background:var(--offwhite);border:1.5px solid var(--border);border-radius:10px;padding:1.25rem">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;background:var(--grad-full);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.75rem">Exemplo prático</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem">
+            <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:0.6rem">
+              <div style="font-size:0.65rem;color:var(--gray);margin-bottom:0.2rem">Venda imóvel</div>
+              <div style="font-size:0.9rem;font-weight:700;color:var(--text)">500.000€</div>
+            </div>
+            <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:0.6rem">
+              <div style="font-size:0.65rem;color:var(--gray);margin-bottom:0.2rem">Nova habitação</div>
+              <div style="font-size:0.9rem;font-weight:700;color:var(--text)">200.000€</div>
+            </div>
+            <div style="background:rgba(228,0,124,0.07);border:1px solid rgba(228,0,124,0.2);border-radius:6px;padding:0.6rem">
+              <div style="font-size:0.65rem;color:var(--ageas-pink);font-weight:600;margin-bottom:0.2rem">Investimento RF</div>
+              <div style="font-size:0.9rem;font-weight:700;color:var(--ageas-pink)">300.000€</div>
+            </div>
+            <div style="background:rgba(5,150,105,0.07);border:1px solid rgba(5,150,105,0.2);border-radius:6px;padding:0.6rem">
+              <div style="font-size:0.65rem;color:var(--success);font-weight:600;margin-bottom:0.2rem">Poupança fiscal</div>
+              <div style="font-size:0.9rem;font-weight:700;color:var(--success)">32.630€</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
+            <div style="background:rgba(228,0,124,0.06);border:1.5px solid rgba(228,0,124,0.2);border-radius:6px;padding:0.75rem;border-left:3px solid var(--ageas-pink)">
+              <div style="font-size:0.65rem;color:var(--ageas-pink);font-weight:600;margin-bottom:0.2rem">Desacumulação máx. (7,5%)</div>
+              <div style="font-size:0.85rem;font-weight:700;color:var(--text)">1.865,60€<span style="font-size:0.65rem;font-weight:400;color:var(--gray)">/mês</span></div>
+              <div style="font-size:0.65rem;color:var(--gray);margin-top:0.2rem">Até aos 80 anos</div>
+            </div>
+            <div style="background:rgba(242,101,34,0.06);border:1.5px solid rgba(242,101,34,0.2);border-radius:6px;padding:0.75rem;border-left:3px solid var(--ageas-orange)">
+              <div style="font-size:0.65rem;color:var(--ageas-orange);font-weight:600;margin-bottom:0.2rem">Desacumulação esperança vida</div>
+              <div style="font-size:0.85rem;font-weight:700;color:var(--text)">1.465,90€<span style="font-size:0.65rem;font-weight:400;color:var(--gray)">/mês</span></div>
+              <div style="font-size:0.65rem;color:var(--gray);margin-top:0.2rem">Até aos 85 anos</div>
+            </div>
+          </div>
+          <div style="font-size:0.67rem;color:var(--gray);margin-top:0.6rem">*Cliente 83 anos · investimento €300.000 · valor de aquisição em 1990: €100.000</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PEDIDO SIMULAÇÃO -->
+  <div style="background:var(--offwhite);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem;display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center">
+    <div>
+      <span class="s-tag">Rendimento Flexível · Pedido de Simulação</span>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:0.75rem;line-height:1.2">O seu rendimento<br>de reforma começa aqui.</h3>
+      <p style="font-size:0.875rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem">Seja para complementar a reforma ou para aproveitar a venda da sua habitação sem pagar mais-valias — o Edgar analisa o seu caso e apresenta a melhor solução.</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray)">
+          <div style="width:28px;height:28px;background:rgba(228,0,124,0.1);border:1px solid rgba(228,0,124,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div>
+          Sem tributação de mais-valias imobiliárias
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray)">
+          <div style="width:28px;height:28px;background:rgba(228,0,124,0.1);border:1px solid rgba(228,0,124,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          Resposta via WhatsApp em menos de 15 minutos
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray)">
+          <div style="width:28px;height:28px;background:rgba(228,0,124,0.1);border:1px solid rgba(228,0,124,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="14" height="14" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+          Simulação gratuita e sem compromisso
+        </div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:12px;padding:2rem">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:0.3rem">Pedido de Simulação</div>
+      <p style="font-size:0.78rem;color:var(--gray);margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)">Rendimento Flexível · Ageas Pensões</p>
+
+      <div class="field-row" style="margin-bottom:1rem">
+        <div class="field"><label>Nome</label><input type="text" id="rf-nome" placeholder="João Silva"></div>
+        <div class="field"><label>Telemóvel</label><input type="tel" id="rf-tel" placeholder="+351 9XX XXX XXX"></div>
+      </div>
+      <div class="field-row" style="margin-bottom:1rem">
+        <div class="field"><label>Idade</label><input type="number" id="rf-idade" placeholder="Ex: 65" min="18" max="90"></div>
+        <div class="field">
+          <label>Modalidade</label>
+          <select id="rf-modalidade">
+            <option value="Rendimento Flexível (Reforma)">Rendimento Flexível — Reforma</option>
+            <option value="Rendimento Flexível — Mais Valias (Venda Habitação)">Rendimento Flexível — Mais Valias</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row" style="margin-bottom:1rem">
+        <div class="field">
+          <label>Montante a investir</label>
+          <select id="rf-montante">
+            <option value="Até 50.000€">Até 50.000€</option>
+            <option value="50.000€ – 100.000€">50.000€ – 100.000€</option>
+            <option value="100.000€ – 300.000€" selected>100.000€ – 300.000€</option>
+            <option value="300.000€ – 500.000€">300.000€ – 500.000€</option>
+            <option value="Mais de 500.000€">Mais de 500.000€</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Perfil de risco</label>
+          <select id="rf-perfil">
+            <option value="Segurança">Segurança</option>
+            <option value="Valorização" selected>Valorização</option>
+            <option value="Ações">Ações</option>
+            <option value="Não sei — quero aconselhamento">Não sei — quero aconselhamento</option>
+          </select>
+        </div>
+      </div>
+      <hr class="form-hr">
+      <button class="btn-wa" onclick="sendRFWA()">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L.057 23.5l5.826-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.373l-.36-.213-3.72.976.994-3.632-.234-.373A9.786 9.786 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182c5.432 0 9.818 4.386 9.818 9.818 0 5.432-4.386 9.818-9.818 9.818z"/></svg>
+        Pedir simulação via WhatsApp
+      </button>
+      <p class="privacy">🔒 Dados enviados apenas para o Edgar Azevedo. Nunca partilhados.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- PORQUÊ EDGAR AZEVEDO -->
+<section id="porque-edgar" style="background:var(--offwhite);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 0% 50%, rgba(0,181,173,0.05) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 100% 80%, rgba(228,0,124,0.04) 0%,transparent 60%)"></div>
+  <div style="position:relative;z-index:2">
+
+    <!-- HEADER -->
+    <div style="text-align:center;margin-bottom:3.5rem">
+      <span class="s-tag">O seu consultor de confiança</span>
+      <h2 class="s-title" style="margin:0 auto 1rem;max-width:640px">Porquê fazer o seu seguro de vida<br>com o <span style="background:var(--grad-full);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Edgar Azevedo</span>?</h2>
+      <p style="font-size:1rem;color:var(--gray);max-width:580px;margin:0 auto;line-height:1.8">Fazer um seguro de vida não é apenas escolher o produto mais barato. É proteger o futuro de quem mais ama — e isso exige experiência, conhecimento e acompanhamento dedicado.</p>
+    </div>
+
+    <!-- 5 RAZÕES com ícones coloridos -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:3rem">
+
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.2s" onmouseover="this.style.borderColor='var(--ageas-pink)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="width:44px;height:44px;background:rgba(228,0,124,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        </div>
+        <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Personalização real</h4>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Análise do seu perfil, saúde, objetivos e responsabilidades familiares. O seguro escolhido responde às suas necessidades reais — não à oferta mais rápida do mercado.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.2s" onmouseover="this.style.borderColor='var(--ageas-orange)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="width:44px;height:44px;background:rgba(242,101,34,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="var(--ageas-orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Domínio das coberturas</h4>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Explicação clara de cada cobertura, cláusula e exclusão — morte, invalidez, doenças graves, acidentes. Sem letra pequena escondida, sem surpresas no momento do sinistro.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.2s" onmouseover="this.style.borderColor='var(--ageas-teal)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="width:44px;height:44px;background:rgba(0,181,173,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="var(--ageas-teal)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+        </div>
+        <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Comparação objetiva</h4>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Comparação de múltiplas seguradoras e planos com base no custo-benefício real e solidez financeira — não apenas no preço. A Ageas é uma das seguradoras mais sólidas do mercado.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.2s" onmouseover="this.style.borderColor='var(--ageas-pink)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="width:44px;height:44px;background:rgba(228,0,124,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="var(--ageas-pink)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Planeamento financeiro integrado</h4>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">O seguro de vida é parte do seu planeamento financeiro global: proteção familiar, quitação de dívidas, planeamento sucessório e complemento de reforma. Tudo integrado.</p>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.2s" onmouseover="this.style.borderColor='var(--ageas-orange)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="width:44px;height:44px;background:rgba(242,101,34,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem">
+          <svg width="22" height="22" fill="none" stroke="var(--ageas-orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h4 style="font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Suporte em situações difíceis</h4>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7">Em caso de sinistro, o Edgar orienta sobre documentação, prazos e direitos dos beneficiários — evitando erros que possam comprometer o recebimento do valor contratado.</p>
+      </div>
+
+      <!-- CITAÇÃO -->
+      <div style="background:linear-gradient(135deg,rgba(228,0,124,0.06),rgba(0,181,173,0.06));border:1.5px solid rgba(228,0,124,0.15);border-radius:12px;padding:1.75rem">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--ageas-pink);margin-bottom:0.75rem;line-height:1.4">"O meu objetivo é que o seguro funcione quando realmente precisar."</div>
+        <p style="font-size:0.82rem;color:var(--gray);line-height:1.7;margin-bottom:0.75rem">Acompanhamento personalizado desde a primeira consulta até à renovação anual. Sem call centers, sem filas — contacto direto com quem conhece o seu processo.</p>
+        <div style="display:flex;align-items:center;gap:0.6rem">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--grad-full);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff">EA</div>
+          <div style="font-size:0.75rem;font-weight:700;background:var(--grad-full);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase;letter-spacing:0.06em">Edgar Azevedo · Ageas Seguros</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="text-align:center;margin-bottom:2rem">
+      <div style="display:inline-flex;align-items:center;gap:1rem">
+        <div style="width:80px;height:1px;background:var(--border)"></div>
+        <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray)">Os riscos de escolher mal</span>
+        <div style="width:80px;height:1px;background:var(--border)"></div>
+      </div>
+    </div>
+
+    <!-- RISCOS -->
+    <div style="background:#fff;border:1.5px solid #fca5a5;border-radius:16px;padding:2rem;margin-bottom:2.5rem;box-shadow:0 2px 12px rgba(220,38,38,0.06)">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap">
+        <div style="width:36px;height:36px;background:#fee2e2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="18" height="18" fill="none" stroke="#dc2626" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        </div>
+        <h3 style="font-size:1rem;font-weight:700;color:var(--text)">Contratar apenas pelo preço ou com agente sem experiência pode custar caro</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem">
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626">
+          <span style="color:#dc2626;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px">✕</span>
+          <div><strong style="display:block;font-size:0.82rem;color:var(--text);margin-bottom:0.25rem">Risco de falência ou atrasos</strong><p style="font-size:0.78rem;color:var(--gray);line-height:1.6">Seguradoras com histórico fraco podem atrasar ou não pagar — deixando a família desprotegida no pior momento.</p></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626">
+          <span style="color:#dc2626;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px">✕</span>
+          <div><strong style="display:block;font-size:0.82rem;color:var(--text);margin-bottom:0.25rem">Exclusões escondidas</strong><p style="font-size:0.78rem;color:var(--gray);line-height:1.6">Preço baixo quase sempre significa cobertura reduzida ou condições que impedem o pagamento quando ocorre o sinistro.</p></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626">
+          <span style="color:#dc2626;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px">✕</span>
+          <div><strong style="display:block;font-size:0.82rem;color:var(--text);margin-bottom:0.25rem">Demora nos pagamentos</strong><p style="font-size:0.78rem;color:var(--gray);line-height:1.6">Seguradoras com histórico de reclamações dificultam ou atrasam o pagamento — criando stress para os beneficiários quando mais precisam.</p></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626">
+          <span style="color:#dc2626;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px">✕</span>
+          <div><strong style="display:block;font-size:0.82rem;color:var(--text);margin-bottom:0.25rem">Falta de suporte real</strong><p style="font-size:0.78rem;color:var(--gray);line-height:1.6">Alterações de apólice, inclusão de beneficiários ou esclarecimento de dúvidas tornam-se difíceis sem um agente dedicado que conheça o seu caso.</p></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626">
+          <span style="color:#dc2626;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px">✕</span>
+          <div><strong style="display:block;font-size:0.82rem;color:var(--text);margin-bottom:0.25rem">Custo-benefício comprometido</strong><p style="font-size:0.78rem;color:var(--gray);line-height:1.6">Um seguro barato hoje pode gerar custos indiretos elevados amanhã. A solidez e transparência da seguradora valem mais do que poupar alguns euros por mês.</p></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:#fef2f2;border-radius:8px;border-left:3px solid #dc2626">
+          <span style="color:#dc2626;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:1px">✕</span>
+          <div><strong style="display:block;font-size:0.82rem;color:var(--text);margin-bottom:0.25rem">Produto isolado sem planeamento</strong><p style="font-size:0.78rem;color:var(--gray);line-height:1.6">Um agente sem experiência vende apenas um produto — sem o integrar no seu planeamento financeiro global, perdendo valor estratégico para a família.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;padding:2.5rem;background:linear-gradient(135deg,rgba(228,0,124,0.05),rgba(0,181,173,0.05));border:1.5px solid rgba(228,0,124,0.15);border-radius:12px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Faça a escolha certa. Com quem realmente conhece.</div>
+      <p style="font-size:0.875rem;color:var(--gray);margin-bottom:1.5rem">Acompanhamento pessoal · Edgar Azevedo · Ageas Seguros · Resposta em 15 minutos</p>
+      <button class="btn-primary" onclick="document.getElementById('simulador').scrollIntoView({behavior:'smooth'})">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 7l5 5-5 5"/></svg>
+        Simular o meu seguro agora
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-header">
+    <div>
+      <span class="s-tag">Perguntas frequentes</span>
+      <h2 class="s-title">Tudo o que precisa<br>de saber</h2>
+    </div>
+    <div>
+      <p style="font-size:0.95rem;color:var(--gray);line-height:1.8">Não encontrou resposta? Envie mensagem direta ao Edgar via WhatsApp — responde em minutos.</p>
+      <a href="#simulador" class="btn-primary" style="margin-top:1.25rem;display:inline-flex">Falar com Edgar</a>
+    </div>
+  </div>
+  <div class="faq-list" id="faq-list"></div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2 class="cta-title">Pronto para proteger a sua família?</h2>
+  <p class="cta-sub">Simulação gratuita · Sem compromisso · Resposta em 15 minutos</p>
+  <button class="btn-white" onclick="sendWhatsApp()">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L.057 23.5l5.826-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.373l-.36-.213-3.72.976.994-3.632-.234-.373A9.786 9.786 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182c5.432 0 9.818 4.386 9.818 9.818 0 5.432-4.386 9.818-9.818 9.818z"/></svg>
+    Falar com Edgar Azevedo agora
+  </button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Edgar Azevedo <span>·</span> Ageas Seguros</div>
+    <div class="footer-info">
+      Mediador de Seguros Autorizado · ASF N.º 324583783<br>
+      Vida e Não Vida · © 2026 · Todos os direitos reservados
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/351913042770?text=Olá%20Edgar!%20Gostaria%20de%20saber%20mais%20sobre%20seguros%20de%20vida." target="_blank">
+    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L.057 23.5l5.826-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.003-1.373l-.36-.213-3.72.976.994-3.632-.234-.373A9.786 9.786 0 012.182 12C2.182 6.568 6.568 2.182 12 2.182c5.432 0 9.818 4.386 9.818 9.818 0 5.432-4.386 9.818-9.818 9.818z"/></svg>
+    <span class="wa-label">Falar com Edgar</span>
+  </a>
+</div>
+
+<script>
+// ── TARIFAS REAIS AGEAS (por 1.000€ de capital seguro / ano) ──
+const TARIFAS = {
+  morte_idparc_60: {
+    '18-25':1.138,'26-30':1.155,'31-35':1.264,'36-40':1.691,
+    '41-45':2.206,'46-50':3.638,'51-55':5.854,'56-60':10.332,
+    '61-66':18.077,'67-69':28.109,'70-74':49.409,'75-79':78.034,'80-84':147.794
+  },
+  morte_idparc_66: {
+    '18-25':1.128,'26-30':1.143,'31-35':1.244,'36-40':1.660,
+    '41-45':2.159,'46-50':3.550,'51-55':5.712,'56-60':10.075,
+    '61-66':17.515,'67-69':28.109,'70-74':49.409,'75-79':78.034,'80-84':147.794
+  },
+  morte_dependencia: {
+    '18-25':1.047,'26-30':1.058,'31-35':1.076,'36-40':1.383,
+    '41-45':1.802,'46-50':2.876,'51-55':4.719,'56-60':8.268,
+    '61-66':13.406,'67-69':28.109,'70-74':49.409,'75-79':78.034,'80-84':147.794
+  },
+  mais: {
+    '18-25':2.447,'26-30':2.378,'31-35':2.466,'36-40':3.016,
+    '41-45':3.593,'46-50':5.459,'51-55':8.229,'56-60':13.900,
+    '61-66':24.817,'67-69':28.909,'70-74':49.409,'75-79':78.034,'80-84':147.794
+  },
+  top: {
+    '18-25':8.4797,'26-30':8.9862,'31-35':9.779,'36-40':10.38092,
+    '41-45':11.64288,'46-50':13.315,'51-55':17.471,'56-60':22.18132,
+    '61-66':29.35036,'67-69':25.762,'70-74':0,'75-79':0,'80-84':0
+  }
+};
+
+function getAgeKey(age){
+  age=parseInt(age);
+  if(age<=25) return '18-25';
+  if(age<=30) return '26-30';
+  if(age<=35) return '31-35';
+  if(age<=40) return '36-40';
+  if(age<=45) return '41-45';
+  if(age<=50) return '46-50';
+  if(age<=55) return '51-55';
+  if(age<=60) return '56-60';
+  if(age<=66) return '61-66';
+  if(age<=69) return '67-69';
+  if(age<=74) return '70-74';
+  if(age<=79) return '75-79';
+  return '80-84';
+}
+
+let currentPlan = 'Base';
+let currentAge = 35;
+let currentCap = 100000;
+
+function fmtEur(n){ return n.toLocaleString('pt-PT',{minimumFractionDigits:2,maximumFractionDigits:2})+'€' }
+function fmtCap(n){ return n.toLocaleString('pt-PT')+'€' }
+
+function calcPremium(){
+  const age = currentAge;
+  const cap = currentCap;
+  const ageKey = getAgeKey(age);
+  let tarifaKey, planLabel;
+
+  if(currentPlan==='Base'){
+    tarifaKey = document.getElementById('base-subtipo').value;
+    const subMap = {'morte_idparc_60':'Base Morte+IDPARC 60%','morte_idparc_66':'Base Morte+IDPARC 66%','morte_dependencia':'Base Morte+Dependência'};
+    planLabel = subMap[tarifaKey];
+  } else if(currentPlan==='Mais'){
+    tarifaKey='mais'; planLabel='Mais';
+  } else {
+    tarifaKey='top'; planLabel='Top';
+  }
+
+  const tarifaAnual = TARIFAS[tarifaKey][ageKey];
+  if(!tarifaAnual || tarifaAnual===0){
+    document.getElementById('r-price').innerHTML = '<small style="font-size:0.85rem;color:#dc2626">Não disponível para esta idade</small>';
+    document.getElementById('result-box').classList.add('show');
+    document.getElementById('r-plano').textContent='—';
+    document.getElementById('r-idade').textContent=age+' anos';
+    document.getElementById('r-cap').textContent=fmtCap(cap);
+    document.getElementById('r-tarifa').textContent='N/D';
+    return;
+  }
+
+  const premioAnual = (tarifaAnual * cap) / 1000;
+  const premioMensal = premioAnual / 12;
+
+  document.getElementById('r-price').innerHTML = fmtEur(premioMensal)+'<small>/mês</small>';
+  document.getElementById('r-plano').textContent = planLabel;
+  document.getElementById('r-idade').textContent = age+' anos';
+  document.getElementById('r-cap').textContent = fmtCap(cap);
+  document.getElementById('r-tarifa').textContent = fmtEur(tarifaAnual)+'/1000€';
+  document.getElementById('result-box').classList.add('show');
+}
+
+function updateAge(v){
+  currentAge=parseInt(v);
+  document.getElementById('age-display').textContent=v+' anos';
+  calcPremium();
+}
+function updateCap(v){
+  currentCap=parseInt(v);
+  document.getElementById('cap-display').textContent=parseInt(v).toLocaleString('pt-PT')+' €';
+  calcPremium();
+}
+function setPlan(btn,plan){
+  document.querySelectorAll('.plan-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentPlan=plan;
+  document.getElementById('base-subtipo-field').style.display = plan==='Base'?'block':'none';
+  calcPremium();
+}
+function goSim(plan){
+  document.getElementById('simulador').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{
+    document.querySelectorAll('.plan-pill').forEach(b=>{
+      if(b.textContent.trim()===plan){setPlan(b,plan)}
+    });
+  },400);
+}
+
+function sendWhatsApp(){
+  const nome = document.getElementById('nome').value||'(não indicado)';
+  const tel  = document.getElementById('tel').value||'(não indicado)';
+  const ageKey = getAgeKey(currentAge);
+  let tarifaKey, planLabel;
+  if(currentPlan==='Base'){
+    tarifaKey=document.getElementById('base-subtipo').value;
+    const subMap={'morte_idparc_60':'Base Morte+IDPARC 60%','morte_idparc_66':'Base Morte+IDPARC 66%','morte_dependencia':'Base Morte+Dependência'};
+    planLabel=subMap[tarifaKey];
+  } else if(currentPlan==='Mais'){tarifaKey='mais';planLabel='Mais';}
+  else{tarifaKey='top';planLabel='Top';}
+  const tarifaAnual=TARIFAS[tarifaKey]?.[ageKey]||0;
+  const premioMensal=tarifaAnual>0?fmtEur((tarifaAnual*currentCap/1000)/12):'N/D';
+
+  const msg =
+    `Olá Edgar! 👋 Gostaria de receber uma proposta de seguro de vida.\n\n`+
+    `📋 *Dados da simulação:*\n`+
+    `• Nome: ${nome}\n`+
+    `• Telemóvel: ${tel}\n`+
+    `• Plano: Ritmo Vida Família — ${planLabel}\n`+
+    `• Idade: ${currentAge} anos\n`+
+    `• Capital seguro: ${fmtCap(currentCap)}\n`+
+    `• Prémio estimado: ${premioMensal}/mês\n\n`+
+    `Aguardo o seu contacto. Obrigado!`;
+
+  window.open('https://wa.me/351913042770?text='+encodeURIComponent(msg),'_blank');
+}
+
+// FAQ DATA
+const faqs = [
+  {q:'O que é o Ritmo Vida Família da Ageas?',a:'É um seguro de vida com três planos (Base, Mais, Top) que cobre morte por doença e acidente, dependência, invalidez e, no plano Top, incapacidade temporária e hospitalização.'},
+  {q:'Como é calculado o prémio mensal?',a:'O prémio é calculado com base na tarifa por 1.000€ de capital seguro, que varia conforme a idade e o plano escolhido. O simulador usa a tabela oficial da Ageas.'},
+  {q:'Posso contratar sem fazer exames médicos?',a:'Depende do capital seguro e da idade. O Edgar Azevedo indicar-lhe-á se são necessários exames após analisar o seu perfil.'},
+  {q:'O seguro cobre doenças preexistentes?',a:'Não. Doenças preexistentes não declaradas estão excluídas. É fundamental declarar toda a história clínica no questionário de saúde.'},
+  {q:'Qual a diferença entre IDPAC e IDPAD?',a:'IDPAC é a Invalidez Definitiva para a Profissão ou Atividade Remunerada Compatível (com grau de desvalorização de 60% ou 66%). IDPAD é a Invalidez para a Profissão ou Atividade Remunerada Declarada, disponível apenas no plano Top.'},
+  {q:'O plano Top está disponível para todas as idades?',a:'O plano Top está disponível até aos 69 anos. A partir dos 70 anos, a cobertura Top não está disponível neste produto.'},
+  {q:'Como faço para subscrever?',a:'Basta simular aqui, enviar a mensagem ao Edgar via WhatsApp e ele acompanha-o em todo o processo — do questionário de saúde à emissão da apólice.'},
+  {q:'Posso alterar o capital seguro ao longo do contrato?',a:'Sim, sujeito a condições da apólice. O Edgar pode explicar as opções de revisão anual e aumento de capital disponíveis.'},
+];
+const faqList = document.getElementById('faq-list');
+faqs.forEach(f=>{
+  const div=document.createElement('div');
+  div.className='faq-item';
+  div.innerHTML=`<div class="faq-q">${f.q}<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg></div><div class="faq-a">${f.a}</div>`;
+  div.addEventListener('click',()=>div.classList.toggle('open'));
+  faqList.appendChild(div);
+});
+
+// ── MOBILE NAV ──
+function toggleMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const btn  = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+// Close menu on outside click
+document.addEventListener('click', function(e){
+  const menu = document.getElementById('mobile-menu');
+  const btn  = document.getElementById('hamburger');
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)){
+    closeMenu();
+  }
+});
+
+function sendRFWA(){
+  const nome      = document.getElementById('rf-nome').value      || '(não indicado)';
+  const tel       = document.getElementById('rf-tel').value       || '(não indicado)';
+  const idade     = document.getElementById('rf-idade').value     || '(não indicado)';
+  const modalidade= document.getElementById('rf-modalidade').value;
+  const montante  = document.getElementById('rf-montante').value;
+  const perfil    = document.getElementById('rf-perfil').value;
+
+  const msg =
+    `Olá Edgar! 👋 Gostaria de pedir uma simulação do *Rendimento Flexível* da Ageas Pensões.\n\n`+
+    `📋 *Dados do pedido:*\n`+
+    `• Nome: ${nome}\n`+
+    `• Telemóvel: ${tel}\n`+
+    `• Idade: ${idade} anos\n`+
+    `• Modalidade: ${modalidade}\n`+
+    `• Montante a investir: ${montante}\n`+
+    `• Perfil de risco: ${perfil}\n\n`+
+    `Aguardo a sua proposta. Obrigado!`;
+
+  window.open('https://wa.me/351913042770?text='+encodeURIComponent(msg),'_blank');
+}
+
+// VIVA PLUS
+function toggleDoencas(){
+  const el = document.getElementById('doencas-full');
+  const icon = document.getElementById('btn-doencas-icon');
+  const txt = document.getElementById('btn-doencas-txt');
+  const isOpen = el.style.display !== 'none';
+  el.style.display = isOpen ? 'none' : 'block';
+  icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+  txt.textContent = isOpen ? 'Ver todas as doenças' : 'Ocultar lista';
+}
+
+function sendVivaPlusWA(){
+  const nome   = document.getElementById('vp-nome').value   || '(não indicado)';
+  const tel    = document.getElementById('vp-tel').value    || '(não indicado)';
+  const idade  = document.getElementById('vp-idade').value  || '(não indicado)';
+  const plano  = document.getElementById('vp-plano').value;
+  const capital= document.getElementById('vp-capital').value;
+  const periodo= document.getElementById('vp-periodo') ? document.getElementById('vp-periodo').value : 'Mensal';
+
+  const msg =
+    `Olá Edgar! 👋 Gostaria de pedir uma simulação do *Viva Plus* da Ageas.\n\n`+
+    `📋 *Dados do pedido:*\n`+
+    `• Nome: ${nome}\n`+
+    `• Telemóvel: ${tel}\n`+
+    `• Idade: ${idade} anos\n`+
+    `• Plano: ${plano}\n`+
+    `• Capital pretendido: ${capital}\n`+
+    `• Periodicidade: ${periodo}\n\n`+
+    `Aguardo a sua proposta. Obrigado!`;
+
+  window.open('https://wa.me/351913042770?text='+encodeURIComponent(msg),'_blank');
+}
+
+// INIT
+calcPremium();
+</script>
+</body>
+</html>
